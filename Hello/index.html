@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+	<head>
+		<meta charset="utf-8">
+		<title>Hola mundo con angularJS</title>
+		<link rel="stylesheet" type="text/css" href="../Hello/assets/css/style.css">
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>Home</li>
+					<li>Link</li>
+					<li>Link</li>
+				</ul>
+			</nav>
+		</header>
+
+		<section ng-controller="FirstController">
+			<fieldset>
+				<label>Name *</label>
+				<input type="text" ng-model="name" name="name">
+				<span>{{ "Hola " + name }}</span>
+			</fieldset>
+			
+			<ul>
+				<li ng-repeat="comment in comments">
+					<p>{{comment.comment}} <strong>{{ comment.username }}</strong> </p>
+				</li>
+			</ul>
+		</section>
+
+		<footer>
+			<span>© Copyright 2018 @jjmmontilla</span> 
+		</footer>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="../hello/controller/controller.js"></script>
+</html>
