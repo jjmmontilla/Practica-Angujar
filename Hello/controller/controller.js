@@ -1,6 +1,7 @@
 var app = angular.module('MyApp', []);
-app.controller("FirstController",["$scope", function(e) {
+app.controller("FirstController",["$scope", "$http", function(e, http) {
 	e.name = "jjmmontilla";
+	e.posts = [];
 	e.newComment = {};
 	e.comments = [
 		{
@@ -18,7 +19,19 @@ app.controller("FirstController",["$scope", function(e) {
 	];
 
 	e.addComment = function(){
-		e.comments.push(e.newComment);
+		$scope.comments.push($scope.newComment);
 	}
-}]
+
+	http({
+	      method: 'GET',
+	      url: 'https://jsonplaceholder.typicode.com/posts'
+	}).then(function (success){
+		if(success.data){
+			e.posts = success.data;
+		}
+	},function (error){
+
+	});
+		
+} ]
 );

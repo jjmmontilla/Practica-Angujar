@@ -31,10 +31,18 @@
 					<button ng-click="addComment()">Agregar</button>
 				</fieldset>
 				
-				<h3>Comentarios</h3>
+				<h3>Comentarios Locales</h3>
 				<ul>
 					<li ng-repeat="comment in comments">
 						<p>{{comment.comment}} <strong>{{ comment.username }}</strong> </p>
+					</li>
+				</ul>
+				</br>
+				<h3>Comentarios Externos</h3>
+				<ul>
+					<li ng-repeat="post in posts">
+						<p><strong>{{post.body}} </strong> 
+						{{ post.title }} </p>
 					</li>
 				</ul>
 			</section>
