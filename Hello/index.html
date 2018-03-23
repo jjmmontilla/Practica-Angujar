@@ -3,35 +3,48 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Hola mundo con angularJS</title>
-		<link rel="stylesheet" type="text/css" href="../Hello/assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="../Hello/assets/css/main.css">
 	</head>
 	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>Home</li>
-					<li>Link</li>
-					<li>Link</li>
-				</ul>
+		<header class="fixed">
+			<nav class="navbar navbar-inverse">
+				<div class="container d-table">
+					<div class="navbar-header dt-cell">
+						<h1>
+							<a href="index.html">Logo</a>
+						</h1>
+					</div>
+					<ul class="navbar-nav dt-cell">
+						<li><a href="">Page 1</a></li>
+						<li><a href="">Page 2</a></li>
+						<li><a href="">Page 4</a></li>
+					</ul>
+				</div>
 			</nav>
 		</header>
 
-		<section ng-controller="FirstController">
-			<fieldset>
-				<label>Name *</label>
-				<input type="text" ng-model="name" name="name">
-				<span>{{ "Hola " + name }}</span>
-			</fieldset>
+		<div class="main">
+			<section ng-controller="FirstController" class="container">
+				<fieldset>
+					<input type="text" ng-model="newComment.comment" placeholder="Escribe tu comentario">
+					<input type="text" ng-model="newComment.username" placeholder="Nombre del usuario">
+					<button ng-click="addComment()">Agregar</button>
+				</fieldset>
+				
+				<h3>Comentarios</h3>
+				<ul>
+					<li ng-repeat="comment in comments">
+						<p>{{comment.comment}} <strong>{{ comment.username }}</strong> </p>
+					</li>
+				</ul>
+			</section>
 			
-			<ul>
-				<li ng-repeat="comment in comments">
-					<p>{{comment.comment}} <strong>{{ comment.username }}</strong> </p>
-				</li>
-			</ul>
-		</section>
+		</div>
 
-		<footer>
-			<span>© Copyright 2018 @jjmmontilla</span> 
+		<footer class="bgColor">
+			<div class="container">
+				<p class="text-center">© Copyright 2018 @jjmmontilla</p>
+			</div> 
 		</footer>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

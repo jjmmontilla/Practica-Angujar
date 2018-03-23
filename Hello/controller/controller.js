@@ -1,7 +1,8 @@
 var app = angular.module('MyApp', []);
-app.controller("FirstController", function($scope) {
-	$scope.name = "jjmmontilla";
-	$scope.comments = [
+app.controller("FirstController",["$scope", function(e) {
+	e.name = "jjmmontilla";
+	e.newComment = {};
+	e.comments = [
 		{
 			username: "Yuraima",
 			comment: "Buen trabajo con Angular"	
@@ -14,5 +15,10 @@ app.controller("FirstController", function($scope) {
 			username: "Diego",
 			comment: "Lorem ipsum dolor sit amet, consectetur adipiscing eli"	
 		}
-	]
-});
+	];
+
+	e.addComment = function(){
+		e.comments.push(e.newComment);
+	}
+}]
+);
