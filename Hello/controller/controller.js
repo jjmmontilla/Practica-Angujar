@@ -1,4 +1,4 @@
-var app = angular.module('MyApp', []);
+var app = angular.module('MyApp', ["LocalStorageModule"]);
 app.controller("CommentsFlash",["$scope", function(e) {
 	e.newComment = {};
 	e.comments = [
@@ -17,7 +17,7 @@ app.controller("CommentsFlash",["$scope", function(e) {
 	];
 
 	e.addComment = function(){
-		$scope.comments.push($scope.newComment);
+		e.comments.push(e.newComment);
 	}
 		
 } ]
@@ -51,6 +51,24 @@ app.controller("CommentsAPI", ["$scope", "$http", function(e, http) {
 		},function (error){
 			console.log(error);
 		});
+	}
+}]
+);
+
+app.controller("ToDoList", ["$scope", "$http", "localStorageService", function(e, http, storage){
+	e.todo = [];
+	e.newToDo = {};
+
+	if(storage.get('angular-todoList')){
+		e.todo = storage.get('angular-todoList');
+	}else{
+		e.todo = [];
+	}
+
+	e.addActividad = function(){
+		e.todo.push(e.newToDo);
+		storage.set("angular-todoList", e.todo);
+		e.newToDo = {};
 	}
 }]
 );

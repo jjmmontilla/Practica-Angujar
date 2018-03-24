@@ -13,9 +13,16 @@
 	h3{
 		margin: 10px 0;
 		font-size: 14px;
+		font-weight: 600;
+		color: #89c541;
+    	text-transform: uppercase;
 	}
 
 	section{
+		fieldset{
+			margin-bottom: 14px;
+		}
+
 		li{
 			margin: 6px 0;
 		}

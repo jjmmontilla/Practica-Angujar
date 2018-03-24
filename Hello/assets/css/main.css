@@ -140,7 +140,12 @@ footer {
   padding: 4em 0; }
   .main h3 {
     margin: 10px 0;
-    font-size: 14px; }
+    font-size: 14px;
+    font-weight: 600;
+    color: #89c541;
+    text-transform: uppercase; }
+  .main section fieldset {
+    margin-bottom: 14px; }
   .main section li {
     margin: 6px 0; }
 

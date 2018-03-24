@@ -24,14 +24,34 @@
 		</header>
 
 		<div class="main container">
+			<section ng-controller="ToDoList">
+				<h3>Tareas con Local storage </h3>
+
+				<form ng-submit="addActividad()">
+					<fieldset>
+						<input type="text" ng-model="newToDo.actividad" placeholder="Escribe tu comentario" required="required">
+						<input type="date" ng-model="newToDo.fecha" placeholder="Nombre del usuario" required="required">
+						<input type="submit" name="Agregar">
+					</fieldset>
+				</form>
+
+				<ul>
+					<li ng-repeat="to in todo">
+						<p>{{to.actividad}} <strong>{{ to.fecha }}</strong> </p>
+					</li>
+				</ul>
+
+			</section>
+
 			<section ng-controller="CommentsFlash" class="col-6">
+				<h3>Comentarios Flash</h3>
+
 				<fieldset>
-					<input type="text" ng-model="newComment.comment" placeholder="Escribe tu comentario">
-					<input type="text" ng-model="newComment.username" placeholder="Nombre del usuario">
+					<input type="text" ng-model="newComment.comment" placeholder="Escribe tu comentario" required="required">
+					<input type="text" ng-model="newComment.username" placeholder="Nombre del usuario" required="required">
 					<button ng-click="addComment()">Agregar</button>
 				</fieldset>
 				
-				<h3>Comentarios Locales</h3>
 				<ul>
 					<li ng-repeat="comment in comments">
 						<p>{{comment.comment}} <strong>{{ comment.username }}</strong> </p>
@@ -40,13 +60,14 @@
 			</section>
 
 			<section class="col-6" ng-controller="CommentsAPI">
+				<h3>Comentarios del API</h3>
+
 				<fieldset>
-					<input type="text" ng-model="newComment.title" placeholder="Tituloo">
-					<input type="text" ng-model="newComment.body" placeholder="Escribe tu comentario">
+					<input type="text" ng-model="newComment.title" placeholder="Tituloo" required="required">
+					<input type="text" ng-model="newComment.body" placeholder="Escribe tu comentario" required="required">
 					<input type="hidden" ng-model="newComment.userId" value="1">
 					<button ng-click="addCommentAPI()">Agregar API</button>
 				</fieldset>
-				<h3>Comentarios del API</h3>
 				<ul>
 					<li ng-repeat="post in posts">
 						<p><strong>{{post.body}} </strong> 
@@ -65,4 +86,5 @@
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="../hello/controller/controller.js"></script>
+	<script src="../hello/assets/js/angular-local-storage.min.js"></script>
 </html>
