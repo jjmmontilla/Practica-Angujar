@@ -17,7 +17,12 @@ body{
 	.text-left{ text-align: left; }
 	.text-right{ text-aign: right; }
 	.hidden{ display: none; }
-	
+	.col-6{
+		width: calc(50% - 2em);
+		display: inline-block;
+		vertical-align: top;
+		position: relative; 
+	}
 	.bgColor{
 		background-color: $bgLayout;
 		color: $white;
@@ -47,7 +52,7 @@ header{
 	}
 
 	&.fixed + .main{
-		padding-top: 70px;
+		padding-top: 120px;
 		min-height: 200px;
 	}
 
@@ -55,6 +60,7 @@ header{
 		min-height: 60px;
 		width: 100%;
 		display: table;
+		background-color: $white;
 
 		.navbar-nav{
 			>li{

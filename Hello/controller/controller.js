@@ -1,7 +1,5 @@
 var app = angular.module('MyApp', []);
-app.controller("FirstController",["$scope", "$http", function(e, http) {
-	e.name = "jjmmontilla";
-	e.posts = [];
+app.controller("CommentsFlash",["$scope", function(e) {
 	e.newComment = {};
 	e.comments = [
 		{
@@ -21,6 +19,12 @@ app.controller("FirstController",["$scope", "$http", function(e, http) {
 	e.addComment = function(){
 		$scope.comments.push($scope.newComment);
 	}
+		
+} ]
+);
+
+app.controller("CommentsAPI", ["$scope", "$http", function(e, http) {
+	e.posts = [];
 
 	http({
 	      method: 'GET',
@@ -32,6 +36,21 @@ app.controller("FirstController",["$scope", "$http", function(e, http) {
 	},function (error){
 
 	});
-		
-} ]
+
+	e.addCommentAPI = function(){
+
+		http({
+		    method: 'POST',
+		    url: 'https://jsonplaceholder.typicode.com/posts',
+		    data : e.newComment
+		}).then(function (success){
+			if(success.data){
+				$scope.comments.push($scope.newComment);
+				console.log(success.data);
+			}
+		},function (error){
+			console.log(error);
+		});
+	}
+}]
 );

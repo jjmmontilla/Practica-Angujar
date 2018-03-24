@@ -10,8 +10,8 @@
 			<nav class="navbar navbar-inverse">
 				<div class="container d-table">
 					<div class="navbar-header dt-cell">
-						<h1>
-							<a href="index.html">Logo</a>
+						<h1 class="logo">
+							<a href="index.html"><img src="../Hello/assets/img/logoMedium.jpg"></a>
 						</h1>
 					</div>
 					<ul class="navbar-nav dt-cell">
@@ -23,8 +23,8 @@
 			</nav>
 		</header>
 
-		<div class="main">
-			<section ng-controller="FirstController" class="container">
+		<div class="main container">
+			<section ng-controller="CommentsFlash" class="col-6">
 				<fieldset>
 					<input type="text" ng-model="newComment.comment" placeholder="Escribe tu comentario">
 					<input type="text" ng-model="newComment.username" placeholder="Nombre del usuario">
@@ -37,8 +37,16 @@
 						<p>{{comment.comment}} <strong>{{ comment.username }}</strong> </p>
 					</li>
 				</ul>
-				</br>
-				<h3>Comentarios Externos</h3>
+			</section>
+
+			<section class="col-6" ng-controller="CommentsAPI">
+				<fieldset>
+					<input type="text" ng-model="newComment.title" placeholder="Tituloo">
+					<input type="text" ng-model="newComment.body" placeholder="Escribe tu comentario">
+					<input type="hidden" ng-model="newComment.userId" value="1">
+					<button ng-click="addCommentAPI()">Agregar API</button>
+				</fieldset>
+				<h3>Comentarios del API</h3>
 				<ul>
 					<li ng-repeat="post in posts">
 						<p><strong>{{post.body}} </strong> 

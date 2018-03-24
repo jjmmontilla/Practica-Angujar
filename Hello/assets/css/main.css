@@ -85,6 +85,11 @@ body {
     text-aign: right; }
   body .hidden {
     display: none; }
+  body .col-6 {
+    width: calc(50% - 2em);
+    display: inline-block;
+    vertical-align: top;
+    position: relative; }
   body .bgColor {
     background-color: #333;
     color: #fff; }
@@ -105,12 +110,13 @@ header {
     box-shadow: 0px 3px 4px 0px rgba(171, 168, 171, 0.66);
     z-index: 999; }
   header.fixed + .main {
-    padding-top: 70px;
+    padding-top: 120px;
     min-height: 200px; }
   header .navbar {
     min-height: 60px;
     width: 100%;
-    display: table; }
+    display: table;
+    background-color: #fff; }
     header .navbar .navbar-nav > li {
       padding: 6px 10px;
       display: inline-block;
@@ -125,5 +131,17 @@ header {
 
 footer {
   padding: 12px 0; }
+
+.navbar .logo img {
+  width: 150px;
+  margin: 10px 0; }
+
+.main {
+  padding: 4em 0; }
+  .main h3 {
+    margin: 10px 0;
+    font-size: 14px; }
+  .main section li {
+    margin: 6px 0; }
 
 /*# sourceMappingURL=main.css.map */
