@@ -24,7 +24,7 @@
 		</header>
 
 		<div class="main container">
-			<section ng-controller="ToDoList">
+			<section ng-controller="ToDoList" class="col-6">
 				<h3>Tareas con Local storage </h3>
 
 				<form ng-submit="addActividad()">
@@ -35,12 +35,38 @@
 					</fieldset>
 				</form>
 
+				<button ng-click="clean()">Limpiar lista de actividad</button> 
+
 				<ul>
 					<li ng-repeat="to in todo">
-						<p>{{to.actividad}} <strong>{{ to.fecha }}</strong> </p>
+						<p>{{to.actividad}} <strong>{{ to.fecha | date : format : timezone }}</strong> <a href="#" ng-click="removeItem(to)"> Delete</a> </p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="col-6" ng-controller="FiltersController">
+				<h3>Quitar etiquetas </h3>
+				
+				<form ng-submit="addHtml()">
+					<fieldset>
+						<textarea type="text" ng-model="newHtml.old" value="<p>Hola Mundo</p>" placeholder="Escribe tu Html <p>Hola Mundo</p>" required="required"> </textarea>
+
+						<input type="submit" name="Guardar"> 
+
+					</fieldset>
+				</form>
+								
+				<p><b>Texto:</b> {{ newHtml.old | removeHtml }}</p>
+				
+				<h1><b>Lista de Html</b></h1>
+				
+				<ul>
+					<li ng-repeat="html in listHtml">
+						<p>{{ html.old }} <strong>{{ html.old | removeHtml }}</strong> </p>
 					</li>
 				</ul>
 
+				<button ng-click="cleanHtml()">Limpiar lista de Html</button> 
 			</section>
 
 			<section ng-controller="CommentsFlash" class="col-6">
